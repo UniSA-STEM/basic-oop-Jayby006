@@ -101,3 +101,31 @@ class Hacker:
             i = i + 1
         self.add_trace(1)
         return items
+    
+    def encrypt_inventory(self, name):
+        if self.exposed():
+            return False
+        chip = self.scan_inventory("Security Chip")
+        if chip is None:
+            return False
+        item = self.scan_inventory(name)
+        if item is None:
+            self.__inventory.append(chip)
+            return False
+        item.encrypt()
+        self.__inventory.append(item)
+        return True
+    
+    def encrypt_rig(self, name):
+        if self.exposed():
+            return False
+        if self.__rig is None:
+            return False
+        chip = self.scan_inventory("Security Chip")
+        if chip is None:
+            return False
+        ok = self.__rig.encrypt_in_storage(name)
+        if not ok:
+            self.__inventory.append(chip)
+            return False
+        return True
