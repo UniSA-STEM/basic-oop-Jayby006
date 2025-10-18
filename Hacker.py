@@ -59,5 +59,21 @@ class Hacker:
         else:
             self.__rig = rig
         print( "Rig activation successful:", self.__rig.get_name())
+
+        return True
+    
+    def launch_data_spike(self, target_rig):
+        if self.__rig is None:
+            return False
         
+        if self.exposed():
+            return False
+        
+        spike = self.__rig.release("Data Spike")
+        
+        if spike is None:
+            return False
+        target_rig.take_spike_hit()
+        self.__add_trace(1)
+
         return True
