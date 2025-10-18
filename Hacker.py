@@ -33,4 +33,17 @@ class Hacker:
             inventory.append(self.__inventory[i])
             i = i + 1
         return inventory
+    
+    def add_trace(self, amount = 0):
+        self.__trace = self.__trace + amount
+
+    def exposed(self):
+        return self.__trace > Trace_limit
+    
+    def scan_inventory(self, name):
+        for item in self.__inventory:
+            if item.get_name() == name :
+                self.__inventory.remove(item)
+                return item
+        return None 
    
