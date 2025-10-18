@@ -16,3 +16,21 @@ class Hacker:
         self.__inventory = [Asset("CryptoTocken", "Starter token")]
         self.__rig = None
         self.__trace = 0
+
+    def get_name(self):
+        return self.__name
+
+    def get_rig(self):
+        return self.__rig
+
+    def get_trace(self):
+        return self.__trace
+
+    def get_inventory(self):
+        inventory = []
+        i = 0
+        while i < len(self.__inventory):
+            inventory.append(self.__inventory[i])
+            i = i + 1
+        return inventory
+   
