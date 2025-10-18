@@ -7,6 +7,7 @@ Username: jayby006
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from asset import Asset
+from rig import Rig
 
 Trace_limit = 5
 
@@ -47,3 +48,16 @@ class Hacker:
                 return item
         return None 
    
+    def acquire_a_rig(self, rig = None):
+        token = self.scan_inventory("CryptoToken")
+
+        if token is None:
+            return False
+        
+        if rig is None:
+            self.__rig = Rig(self.__name + "Rig")
+        else:
+            self.__rig = rig
+        print( "Rig activation successful:", self.__rig.get_name())
+        
+        return True
