@@ -77,3 +77,27 @@ class Hacker:
         self.__add_trace(1)
 
         return True
+    
+    def extract_unencrypted(self, target_rig):
+        if self.__rig is None:
+            return None
+        
+        if self.exposed():
+            return None
+        
+        if not target_rig.get_broken():
+            return None
+        
+        drive = self.__rig.release("Removable Drive")
+
+        if drive is None:
+            return None
+        
+        items = target_rig.release_unencrypted()
+        i = 0
+
+        while i < len(items):
+            self.__inventory.append(items[i])
+            i = i + 1
+        self.add_trace(1)
+        return items
