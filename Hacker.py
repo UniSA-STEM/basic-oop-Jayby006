@@ -129,3 +129,32 @@ class Hacker:
             self.__inventory.append(chip)
             return False
         return True
+    
+    def decrypt_inventory(self, name):
+        if self.exposed():
+            return False
+        chip = self.scan_inventory("Security Chip")
+        if chip is None:
+            return False
+        i = 0
+        while i < len(self.__inventory):
+            if self.__inventory[i].get_name() == name:
+                self.__inventory[i].decrypt()
+                return True
+            i = i + 1
+        self.__inventory.append(chip)
+        return False
+    
+    def decrypt_rig(self, name):
+        if self.exposed():
+            return False
+        if self.__rig is None:
+            return False
+        chip = self.scan_inventory("Security Chip")
+        if chip is None:
+            return False
+        ok = self.__rig.decrypt_in_storage(name)
+        if not ok:
+            self.__inventory.append(chip)
+            return False
+        return True
