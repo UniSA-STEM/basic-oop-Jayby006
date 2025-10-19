@@ -173,7 +173,7 @@ class Hacker:
             i = i + 1
 
         if len(items) > 0:
-            inv_text = ", ".join(items)
+            inventory_text = ", ".join(items)
         else:
             inventory_text = "Empty"
 
