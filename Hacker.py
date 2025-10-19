@@ -158,3 +158,23 @@ class Hacker:
             self.__inventory.append(chip)
             return False
         return True
+    
+
+    def __str__(self):
+        if self.__rig is None:
+         rig_name = "No Rig"
+        else:
+            rig_name = self.__rig.get_name()
+        
+        items = []
+        i = 0
+        while i < len(self.__inventory):
+            items.append(str(self.__inventory[i]))
+            i = i + 1
+
+        if len(items) > 0:
+            inv_text = ", ".join(items)
+        else:
+            inventory_text = "Empty"
+
+        return "Hacker: " + self.__name + " | Rig: " + rig_name + " | Trace: " + str(self.__trace) + " | Inventory: " + inv_text
