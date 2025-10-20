@@ -129,4 +129,4 @@ class Rig:
             items_text = "Empty"
         else:
             items_text = ", ".join(items)
-            return "Rig: " + self.__name + " | Condition: " + self.condition() + " | Level: " + str(self.__upgrade_level) + " | Assets: " + items_text
+        return "Rig: " + self.__name + " | Condition: " + self.condition() + " | Level: " + str(self.__upgrade_level) + " | Assets: " + items_text

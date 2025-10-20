@@ -9,7 +9,7 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 from asset import Asset
 from Rig import Rig
 
-Trace_limit = 5
+TRACE_LIMIT = 5
 
 class Hacker:
     def __init__(self,name):
@@ -39,7 +39,7 @@ class Hacker:
         self.__trace = self.__trace + amount
 
     def exposed(self):
-        return self.__trace > Trace_limit
+        return self.__trace > TRACE_LIMIT
     
     def scan_inventory(self, name):
         for item in self.__inventory:
