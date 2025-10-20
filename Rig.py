@@ -59,3 +59,9 @@ class Rig:
         self.__damage = 0
         self.__broken = False
         return True
+    
+    def upgrade_with_patch(self, patch_asset):
+        if patch_asset is None or patch_asset.get_name() != "Hardware Patch":
+            return False
+        self.__upgrade_level = self.__upgrade_level + 1
+        return True
