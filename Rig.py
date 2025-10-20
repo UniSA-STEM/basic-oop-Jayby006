@@ -32,3 +32,20 @@ class Rig:
 
     def get_upgrade_level(self):
         return self.__upgrade_level
+    
+    def condition(self):
+        if self.__broken:
+            state = "Broken"
+        elif self.__damage == 0:
+            state = "Pristine"
+        else:
+            state = "Damaged " + str(self.__damage)
+        return state + " (Level " + str(self.__upgrade_level) + ")"
+    
+    def take_spike_hit(self):
+        if self.__broken:
+            return
+        self.__damage = self.__damage + 1
+        threshold = 2 + self.__upgrade_level
+        if self.__damage >= threshold:
+            self.__broken = True
