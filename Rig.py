@@ -65,3 +65,17 @@ class Rig:
             return False
         self.__upgrade_level = self.__upgrade_level + 1
         return True
+    
+    def capacity(self):
+        return 4 + self.__upgrade_level
+
+    def can_store_more(self):
+        return len(self.__storage) < self.capacity()
+
+    def store(self, asset):
+        if asset.get_encrypted():
+            return False
+        if not self.can_store_more():
+            return False
+        self.__storage.append(asset)
+        return True
