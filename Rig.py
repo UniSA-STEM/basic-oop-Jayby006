@@ -79,3 +79,24 @@ class Rig:
             return False
         self.__storage.append(asset)
         return True
+    
+    def release(self, name):
+        for a in self.__storage:
+            if a.get_name() == name and not a.get_encrypted():
+                self.__storage.remove(a)
+                return a
+        return None
+
+    def release_unencrypted(self):
+        items = []
+        keep_items = []
+        i = 0
+        while i < len(self.__storage):
+            a = self.__storage[i]
+            if a.get_encrypted():
+                keep_items.append(a)
+            else:
+                items.append(a)
+            i = i + 1
+        self.__storage = keep_items
+        return items
