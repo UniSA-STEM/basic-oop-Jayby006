@@ -100,3 +100,21 @@ class Rig:
             i = i + 1
         self.__storage = keep_items
         return items
+
+    def encrypt_in_storage(self, name):
+        i = 0
+        while i < len(self.__storage):
+            if self.__storage[i].get_name() == name:
+                self.__storage[i].encrypt()
+                return True
+            i = i + 1
+        return False
+
+    def decrypt_in_storage(self, name):
+        i = 0
+        while i < len(self.__storage):
+            if self.__storage[i].get_name() == name:
+                self.__storage[i].decrypt()
+                return True
+            i = i + 1
+        return False
