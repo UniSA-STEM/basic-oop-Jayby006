@@ -1,9 +1,9 @@
 """
 File: Asset.py
-Description: <A brief description of this Python module.>
-Author: <full name>
-ID: <student_id>
-Username: <username>
+Description: Defines the Asset class with name, description, and encrypted flag.
+Author: Jayanga Madushanka Bandara Bathabure Gedara
+ID: 110432974
+Username: jayby006
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 class Asset:
@@ -24,7 +24,7 @@ class Asset:
     def set_description(self, text):
         self.__description = text
 
-    def encrypt(self):
+    def encrypt(self): 
         self.__encrypted = True
 
     def decrypt(self):

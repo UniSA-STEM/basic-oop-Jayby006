@@ -1,3 +1,12 @@
+"""
+File: main.py
+Description: Runs simple tests to show battles, encryption rules, trace blocking, repair, and upgrade
+Author: Jayanga Madushanka Bandara Bathabure Gedara
+ID: 110432974
+Username: jayby006
+This is my own work as defined by the University's Academic Misconduct Policy.
+"""
+
 from asset import Asset
 from Hacker import Hacker
 from Rig import Rig
@@ -60,7 +69,7 @@ def main():
         print("Extracted items:", ", ".join(names))
     print(h1)
 
-    print("\n--- Test: Attack with High Trace ---")
+    print("\n--- Attack with High Trace ---")
     print()
     h1.add_trace(6)  # push trace over 5
     print("Hacker exposed:", h1.exposed())
@@ -81,7 +90,7 @@ def main():
     print("Upgrade success:", h2.get_rig().upgrade_with_patch(patch))
     print("Rig condition:", h2.get_rig().condition())
 
-    print("\n=== DONE ===")
+    print("\n=== END ===")
 
 if __name__ == "__main__":
     main()

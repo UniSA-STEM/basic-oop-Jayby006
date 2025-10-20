@@ -1,6 +1,7 @@
 """
 File: Hacker.py
-Description: <A brief description of this Python module.>
+Description:Represents a hacker with a name, private inventory, optional rig, and trace level.
+
 Author: Jayanga Madushanka Bandara Bathabure Gedara
 ID: 110432974
 Username: jayby006
@@ -9,7 +10,7 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 from asset import Asset
 from Rig import Rig
 
-TRACE_LIMIT = 5
+TRACE_LIMIT = 5  # actions are blocked when trace > 5
 
 class Hacker:
     def __init__(self,name):
@@ -27,7 +28,8 @@ class Hacker:
     def get_trace(self):
         return self.__trace
 
-    def get_inventory(self):
+    def get_inventory(self): #Return a shallow copy of inventory list.
+
         inventory = []
         i = 0
         while i < len(self.__inventory):
@@ -35,20 +37,20 @@ class Hacker:
             i = i + 1
         return inventory
     
-    def add_trace(self, amount = 0):
+    def add_trace(self, amount = 0): #Increase trace by amount.
         self.__trace = self.__trace + amount
 
-    def exposed(self):
+    def exposed(self): #True when trace is above the limit, risky actions are blocked
         return self.__trace > TRACE_LIMIT
     
-    def scan_inventory(self, name):
+    def scan_inventory(self, name): #Find and remove one item by name from inventory,return it or None.
         for item in self.__inventory:
             if item.get_name() == name :
                 self.__inventory.remove(item)
                 return item
         return None 
    
-    def acquire_a_rig(self, rig = None):
+    def acquire_a_rig(self, rig = None): #Spend a CryptoToken to attach a rig,create one if not provided.
         token = self.scan_inventory("CryptoToken")
 
         if token is None:
@@ -62,7 +64,7 @@ class Hacker:
 
         return True
     
-    def launch_data_spike(self, target_rig):
+    def launch_data_spike(self, target_rig): #Fire a Data Spike from own rig at a target rig; raises trace by 1
         if self.__rig is None:
             return False
         
@@ -79,6 +81,7 @@ class Hacker:
         return True
     
     def extract_unencrypted(self, target_rig):
+        #If target rig is broken and have a Removable Drive in the rig, pull all unencrypted items and add to inventory. Raises trace by 1
         if self.__rig is None:
             return None
         
@@ -103,6 +106,8 @@ class Hacker:
         return items
     
     def encrypt_inventory(self, name):
+    #Encrypt one inventory item by name using a Security Chip."""
+
         if self.exposed():
             return False
         chip = self.scan_inventory("Security Chip")
@@ -116,7 +121,7 @@ class Hacker:
         self.__inventory.append(item)
         return True
     
-    def encrypt_rig(self, name):
+    def encrypt_rig(self, name): # Encrypt asset inside rig storage
         if self.exposed():
             return False
         if self.__rig is None:
@@ -130,7 +135,7 @@ class Hacker:
             return False
         return True
     
-    def decrypt_inventory(self, name):
+    def decrypt_inventory(self, name): #decrypt inventory item by using security chip.
         if self.exposed():
             return False
         chip = self.scan_inventory("Security Chip")
@@ -145,7 +150,7 @@ class Hacker:
         self.__inventory.append(chip)
         return False
     
-    def decrypt_rig(self, name):
+    def decrypt_rig(self, name): # Decrypt asset inside rig storage
         if self.exposed():
             return False
         if self.__rig is None:
@@ -159,7 +164,7 @@ class Hacker:
             return False
         return True
     
-    def upgrade_rig(self):
+    def upgrade_rig(self): #Upgrade the rig by using hardware patch
         if self.__rig is None:
             return False
         patch = self.scan_inventory("Hardware Patch")
