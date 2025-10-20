@@ -118,3 +118,15 @@ class Rig:
                 return True
             i = i + 1
         return False
+   
+    def __str__(self):
+        i = 0
+        items = []
+        while i < len(self.__storage):
+            items.append(str(self.__storage[i]))
+            i = i + 1
+        if len(items) == 0:
+            items_text = "Empty"
+        else:
+            items_text = ", ".join(items)
+            return "Rig: " + self.__name + " | Condition: " + self.condition() + " | Level: " + str(self.__upgrade_level) + " | Assets: " + items_text
