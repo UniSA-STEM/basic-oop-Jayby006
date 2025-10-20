@@ -1,9 +1,21 @@
 from asset import Asset
 from Hacker import Hacker
+from Rig import Rig
 
-print("=== Acquire rig and __str__ ===")
+print("=== SETUP ===")
 h1 = Hacker("Nyx")
-print("Before:", str(h1))
-acq_ok = h1.acquire_a_rig()   # costs one CryptoToken
-print("Acquire returned:", acq_ok)
-print("After:", str(h1))
+h2 = Hacker("Trinity")
+print(h1)
+print(h2)
+
+#upgrade without a rig
+print("\n=== Upgrade without a rig ===")
+# expected False because no rig yet
+print("Upgrade without rig:", h1.upgrade_rig())
+
+#acquire rigs (costs a CryptoToken)
+print("\n=== Acquire rigs ===")
+print("Acquire h1:", h1.acquire_a_rig())
+print("Acquire h2:", h2.acquire_a_rig())
+print(h1)
+print(h2)
