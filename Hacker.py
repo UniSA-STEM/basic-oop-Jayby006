@@ -159,6 +159,14 @@ class Hacker:
             return False
         return True
     
+    def upgrade_rig(self):
+        if self.__rig is None:
+            return False
+        patch = self.scan_inventory("Hardware Patch")
+        if patch is None:
+            return False
+        return self.__rig.upgrade_with_patch(patch)
+
 
     def __str__(self):
         if self.__rig is None:
