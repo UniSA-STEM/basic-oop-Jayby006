@@ -14,7 +14,7 @@ Trace_limit = 5
 class Hacker:
     def __init__(self,name):
         self.__name = name
-        self.__inventory = [Asset("CryptoTocken", "Starter token")]
+        self.__inventory = [Asset("CryptoToken", "Starter token")]
         self.__rig = None
         self.__trace = 0
 

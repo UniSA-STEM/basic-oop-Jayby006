@@ -49,3 +49,13 @@ class Rig:
         threshold = 2 + self.__upgrade_level
         if self.__damage >= threshold:
             self.__broken = True
+
+    def repair_with_token(self, token_asset):
+        if token_asset is None or token_asset.get_name() != "CryptoToken":
+            return False
+        if self.__damage == 0 and not self.__broken:
+            print("No repair needed.")
+            return False
+        self.__damage = 0
+        self.__broken = False
+        return True
