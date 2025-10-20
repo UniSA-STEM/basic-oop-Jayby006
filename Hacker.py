@@ -7,7 +7,7 @@ Username: jayby006
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 from asset import Asset
-from rig import Rig
+from Rig import Rig
 
 Trace_limit = 5
 
@@ -177,4 +177,4 @@ class Hacker:
         else:
             inventory_text = "Empty"
 
-        return "Hacker: " + self.__name + " | Rig: " + rig_name + " | Trace: " + str(self.__trace) + " | Inventory: " + inv_text
+        return "Hacker: " + self.__name + " | Rig: " + rig_name + " | Trace: " + str(self.__trace) + " | Inventory: " + inventory_text
