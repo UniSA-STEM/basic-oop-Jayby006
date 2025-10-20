@@ -55,7 +55,7 @@ class Hacker:
             return False
         
         if rig is None:
-            self.__rig = Rig(self.__name + "Rig")
+            self.__rig = Rig(self.__name + "'s Rig")
         else:
             self.__rig = rig
         print( "Rig activation successful:", self.__rig.get_name())
