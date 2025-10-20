@@ -74,7 +74,7 @@ class Hacker:
         if spike is None:
             return False
         target_rig.take_spike_hit()
-        self.__add_trace(1)
+        self.add_trace(1)
 
         return True
     
